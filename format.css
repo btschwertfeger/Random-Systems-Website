@@ -6,17 +6,40 @@ html{
    margin: 0 auto;
 }
 
-.random-plots{
+.headline2{
+  text-align: center;
+}
+
+
+/* LINEAR STOCHASTIC EQUATION */
+
+.linstocheq-plot-wrapper{
+  width:100%;
+  height: 600px;
+}
+
+.linstocheq-plot-container{
+  margin: 0 auto;
+  width:80%;
+  height:100%;
+}
+
+.linstocheq-input-section{
+  margin:0 auto;
+  text-align: center;
+}
+
+/* RANDOM WALKS */
+.random-walks-plot-wrapper{
     width:100%;
     height: 400px;
 }
-.plot-container{
+.random-walks-plot-container{
     margin: 0 auto;
     width:80%;
     height:100%;
 }
-.input-section{
+.random-walks-input-section{
     margin:0 auto;
     text-align: center;
-
 }

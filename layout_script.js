@@ -1,38 +1,41 @@
-const n_slide = document.getElementById('n_slide'),
-    nstep_slide = document.getElementById('nsteps_slide');
-const SLIDER = document.getElementsByName('1drandomslider');
-const INPUT_FIELDS = document.getElementsByName('sliderAmount');
+const random_walks_n_slide = document.getElementById('random_walks_n_slide'),
+    random_walks_nstep_slide = document.getElementById('random_walks_nsteps_slide'),
+    random_walks_SLIDER = document.getElementsByName('1drandomslider'),
+    random_walks_value_fields = document.getElementsByName('random-walks-slide-value'),
+    random_walks_plot_variables = ["n", "nsteps"];
 
-const plot_variables = ["n", "nsteps"];
-
-const RESET_BTN = document.getElementById('resetBtn');
-RESET_BTN.onclick = function () {
+const random_walks_RESET_BTN = document.getElementById('random_walks_resetBtn');
+random_walks_RESET_BTN.onclick = function () {
     window.plotRandomGraphs(); // resets the plot
-    [SLIDER, INPUT_FIELDS].forEach((input_list) => {
-        input_list.forEach((element, index) => {
-            const default_value = window.defaultInput[plot_variables[index]];
-            document.getElementById(element.id).value = default_value;
-            document.getElementById(plot_variables[index] + '_slide-amount').value = default_value;
-        });
-    })
+    random_walks_SLIDER.forEach((element, index) => { // reset the sliders
+        const default_value = window.random_walks_defaultInput[random_walks_plot_variables[index]];
+        document.getElementById(element.id).value = default_value;
+    });
+    random_walks_value_fields.forEach((element, index) => { // Reset value fields
+      const default_value = window.random_walks_defaultInput[random_walks_plot_variables[index]];
+      document.getElementById(element.id).innerHTML = default_value;
+    });
+
 }
 
-const PLOT_AGAIN_BTN = document.getElementById('plotAgainBtn');
-PLOT_AGAIN_BTN.onclick = function () {
+const random_walks_PLOT_AGAIN_BTN = document.getElementById('random_walks_plotAgainBtn');
+random_walks_PLOT_AGAIN_BTN.onclick = function () {
     window.plotRandomGraphs({
-        n: document.getElementById('n_slide').value,
-        nsteps: document.getElementById('nsteps_slide').value,
+        n: document.getElementById('random_walks_n_slide').value,
+        nsteps: document.getElementById('random_walks_nsteps_slide').value,
     });
 }
 
-for (let entry = 0; entry < SLIDER.length; entry++) {
-    SLIDER[entry].oninput = function () {
-        document.getElementById(SLIDER[entry].id + "-amount").value = document.getElementById(SLIDER[entry].id).value;
+for (let entry = 0; entry < random_walks_SLIDER.length; entry++) {
+    random_walks_SLIDER[entry].oninput = function () {
+      let elem_id = random_walks_SLIDER[entry].id;
+      elem_id = elem_id.substring(0,elem_id.length-5)
+        document.getElementById(elem_id + "value").innerHTML = document.getElementById(random_walks_SLIDER[entry].id).value;
     }
-    SLIDER[entry].onchange = function () {
+    random_walks_SLIDER[entry].onchange = function () {
         window.plotRandomGraphs({
-            n: document.getElementById('n_slide').value,
-            nsteps: document.getElementById('nsteps_slide').value,
+            n: document.getElementById('random_walks_n_slide').value,
+            nsteps: document.getElementById('random_walks_nsteps_slide').value,
         });
     }
 }
