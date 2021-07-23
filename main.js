@@ -180,12 +180,15 @@ function createLinStochReqDatasets(input) {
     // HISTOGRAM
     const LINSTOCHEQ_HIST_DATASET = {
         type: 'bar',
-        label: 'histogram',
+        label: 'frequency',
         labels: labels,
         yAxisID: 'y',
         xAxisID: 'x',
         data: histdata,
         backgroundColor: "orange",
+        borderColor: "yellow",
+        borderWidth: 1,
+        borderRadius: 5,
 
         barPercentage: 0.5,
         barThickness: 20,
@@ -203,6 +206,7 @@ function createLinStochReqDatasets(input) {
 function plotLinStochEq(input = window.linstocheq_default_input) {
     const RESULT = createLinStochReqDatasets(input);
 
+    // LINE CHART
     document.getElementById('linstocheq_line_plot').remove();
     document.getElementById('linstocheq_line_plot_container').innerHTML = '<canvas id="linstocheq_line_plot" ></canvas>';
     let ctx1 = document.getElementById('linstocheq_line_plot');
@@ -294,6 +298,7 @@ function plotLinStochEq(input = window.linstocheq_default_input) {
     };
     window.linstocheq_line_plot = new Chart(ctx1, config1);
 
+    // HISTOGRAM
     document.getElementById('linstocheq_hist_plot').remove();
     document.getElementById('linstocheq_hist_plot_container').innerHTML = '<canvas id="linstocheq_hist_plot" ></canvas>';
     let ctx2 = document.getElementById('linstocheq_hist_plot');
@@ -341,7 +346,7 @@ function plotLinStochEq(input = window.linstocheq_default_input) {
                         text: 'frequency',
                         font: {
                             family: 'Helvetica',
-                            size: 16
+                            size: 16,
                         },
                     },
                 },
@@ -353,7 +358,6 @@ function plotLinStochEq(input = window.linstocheq_default_input) {
                     loop: (ctx) => ctx.activate
                 }
             },
-            hoverRadius: 8,
             hoverBackgroundColor: 'yellow',
             interaction: {
                 mode: 'nearest',
@@ -422,7 +426,8 @@ function plotRandomGraphs(input = window.random_walks_defaultInput) {
     document.getElementById('random_walks_plot').remove();
     document.getElementById('random_walks_plot_container').innerHTML = '<canvas id="random_walks_plot" ></canvas>';
     let ctx = document.getElementById('random_walks_plot');
-    window.random_walks_temp_plot = new Chart(ctx, {
+
+    const config = {
         type: 'line',
         data: {
             labels: LABELS,
@@ -475,7 +480,198 @@ function plotRandomGraphs(input = window.random_walks_defaultInput) {
                 },
             },
         },
-    });
+    };
+    window.random_walks_temp_plot = new Chart(ctx, config);
+}
+
+/*
+# =========
+# =====================
+# =====================================
+# ===================================================================================
+# ===================================================================================
+// 2D RANDOM WALKS
+*/
+
+window.random_walks2d_defaultInput = {
+    nsteps: 1000,
+}
+window.randomwalks2d_stepsWithoutChange = 0;
+
+function plot_default_2DRandomWalk(input = window.random_walks2d_defaultInput) {
+
+    window.randomwalk2d_lastStepNr = 0;
+    let data = new Array();
+    data.push({
+        x: 0,
+        y: 0,
+        r: 3,
+    })
+    // const LABELS = [0, 0];
+    const DATA = {
+        // labels: LABELS,
+        datasets: [{
+            label: 'Dataset 1',
+            data: data,
+            borderColor: "blue",
+            backgroundColor: "blue",
+            pointRadius: 4,
+        }]
+    };
+    const config = {
+        type: 'bubble',
+        data: DATA,
+        responsive: true,
+        maintainAspectRatio: false,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: '2D Random Walk',
+                },
+            },
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'x',
+                        font: {
+                            family: 'Helvetica',
+                            size: 16,
+                        }
+                    },
+                    min: -100,
+                    max: 100,
+                },
+                y: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'y',
+                        font: {
+                            family: 'Helvetica',
+                            size: 16,
+                        }
+                    },
+                    min: -100,
+                    max: 100,
+                }
+            }
+        },
+    };
+
+    document.getElementById('random_walks2d_plot').remove();
+    document.getElementById('random_walks2d_plot_container').innerHTML = '<canvas id="random_walks2d_plot" style="width:100%; height:100%"></canvas>';
+    let ctx = document.getElementById('random_walks2d_plot');
+    window.random_walks2d_chart = new Chart(ctx, config);
+}
+
+function containsObject(obj, list) {
+    for (let entry = 0; entry < list.length; entry++) {
+        if (list[entry].x === obj.x && list[entry].y === obj.y) {
+            let val = window.random_walks2d_chart.data.datasets[0].data[entry].r;
+            if (val < 10) {
+                window.random_walks2d_chart.data.datasets[0].data[entry].r += 1;
+                window.random_walks2d_chart.update();
+            }
+            window.randomwalks2d_stepsWithoutChange += 1;
+            return true;
+        }
+    }
+    window.randomwalks2d_stepsWithoutChange = 0;
+    return false;
+}
+
+function update2DRandomWalkPlot() {
+    let val = Math.random(),
+        chart = window.random_walks2d_chart;
+
+    let dataset = chart.data.datasets[0];
+    let i = dataset.data.length;
+    let lastX = dataset.data[i - 1].x,
+        lastY = dataset.data[i - 1].y;
+
+    const r = 3,
+        oldLength = dataset.data.length,
+        newVal = 5; //(Math.round(Math.random()) == 0) ? 2.5 : 5;
+    if (val <= 0.25) {
+        if (!containsObject({
+                x: lastX + newVal,
+                y: lastY,
+            }, dataset.data)) {
+            dataset.data.push({
+                x: lastX + newVal,
+                y: lastY,
+                r: r,
+            });
+        }
+    } else if (val <= 0.50) {
+        if (!containsObject({
+                x: lastX - newVal,
+                y: lastY,
+            }, dataset.data)) {
+            dataset.data.push({
+                x: lastX - newVal,
+                y: lastY,
+                r: r,
+            });
+        }
+    } else if (val <= 0.75) {
+        if (!containsObject({
+                x: lastX,
+                y: lastY + newVal,
+            }, dataset.data)) {
+            dataset.data.push({
+                x: lastX,
+                y: lastY + newVal,
+                r: r,
+            });
+        }
+    } else {
+        if (!containsObject({
+                x: lastX,
+                y: lastY - 5,
+            }, dataset.data)) {
+            dataset.data.push({
+                x: lastX,
+                y: lastY - 5,
+                r: r,
+            });
+        }
+    }
+
+    if (oldLength != dataset.data.length) {
+        let xmin = chart.options.scales.x.min,
+            xmax = chart.options.scales.x.max,
+            ymin = chart.options.scales.y.min,
+            ymax = chart.options.scales.y.max;
+
+        if (dataset.data[i].x >= xmax * 0.9) {
+            chart.options.scales.x.max += xmax;
+        }
+        if (dataset.data[i].y >= ymax * 0.9) {
+            chart.options.scales.y.max += ymax;
+        }
+        if (dataset.data[i].x <= xmin * 0.9) {
+            chart.options.scales.x.min += xmin;
+        }
+        if (dataset.data[i].y <= ymin * 0.9) {
+            chart.options.scales.y.min += ymin;
+        }
+    }
+    window.random_walks2d_chart.update();
+    if (window.randomwalks2d_stepsWithoutChange > 30) {
+        clearInterval(window.do_2dRandomWalkintervalId)
+    }
+}
+
+function do_2dRandomWalk() {
+    window.do_2dRandomWalkintervalId = window.setInterval(update2DRandomWalkPlot, 40);
 }
 
 /*
@@ -516,14 +712,14 @@ function do2diff_default() {
                 label: 'Dataset 1',
                 data: ds1,
                 borderColor: "blue",
-                backgroundColor: "skyblue",
+                backgroundColor: "transparent",
                 pointRadius: 5,
             },
             {
                 label: 'Dataset 2',
                 data: ds2,
                 borderColor: "red",
-                backgroundColor: "yellow",
+                backgroundColor: "transparent",
                 pointRadius: 5,
             }
         ]
@@ -576,7 +772,7 @@ function do2diff_default() {
     };
 
     document.getElementById('ddiff_plot').remove();
-    document.getElementById('ddiff_plot_wrapper').innerHTML = '<canvas id="ddiff_plot" style="width:100%;height:100%;"></canvas>';
+    document.getElementById('ddiff_plot_container').innerHTML = '<canvas id="ddiff_plot" style="width:100%;height:100%;"></canvas>';
     let ctx = document.getElementById('ddiff_plot');
     window.ddiff_plot = new Chart(ctx, config);
 }
@@ -632,8 +828,9 @@ function do2ddiff() {
 */
 
 function init() {
-    plotRandomGraphs();
     plotLinStochEq();
+    plotRandomGraphs();
+    plot_default_2DRandomWalk();
     do2diff_default();
 }
 window.onload = init();

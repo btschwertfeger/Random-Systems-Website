@@ -105,6 +105,45 @@ for (let entry = 0; entry < random_walks_SLIDER.length; entry++) {
         });
     }
 }
+/*
+# =========
+# =====================
+# =====================================
+# ===================================================================================
+# ===================================================================================
+// 2D RANDOM WALKS
+*/
+
+
+const randomwalk2d_goBtn = document.getElementById('random_walks2d_goBtn'),
+    randomwalk2d_stepBtn = document.getElementById('random_walks2d_stepBtn'),
+    randomwalk2d_stopBtn = document.getElementById('random_walks2d_stopBtn'),
+    randomwalk2d_againBtn = document.getElementById('random_walks2d_againBtn'),
+    randomwalk2d_resetBtn = document.getElementById('random_walks2d_resetBtn');
+
+randomwalk2d_goBtn.onclick = function () {
+    clearInterval(window.do_2dRandomWalkintervalId);
+    window.do_2dRandomWalk();
+}
+
+randomwalk2d_stepBtn.onclick = function () {
+    window.update2DRandomWalkPlot();
+}
+
+randomwalk2d_stopBtn.onclick = function () {
+    clearInterval(window.do_2dRandomWalkintervalId);
+}
+
+randomwalk2d_againBtn.onclick = function () {
+    document.getElementById('random_walks2d_resetBtn').click();
+    document.getElementById('random_walks2d_goBtn').click();
+
+}
+
+randomwalk2d_resetBtn.onclick = function () {
+    clearInterval(window.do_2dRandomWalkintervalId);
+    window.plot_default_2DRandomWalk();
+}
 
 
 /*

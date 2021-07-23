@@ -1,3 +1,9 @@
+<!--
+    ########################################
+    ## @author Benjamin Thomas Schwertfeger (July 2021)
+    ## copyright by Benjamin Thomas Schwertfeger (July 2021)
+    ############ 
+-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +25,7 @@
     <body>
         <div class="main">
             <div class="headline" style="text-align:center;">
-                <h1>Random Systems</h1>
+                <h1>Random Systems</h1><br>
             </div>
 
             <!-- LINEAR STOCHASTIC EQUATIONS -->
@@ -86,12 +92,11 @@
                     <!-- </div> -->
                 </div>
             </div>
-
             <div class="placeholder" style="width:100%;height:100px;"></div>
             <!-- RANDOM WALKS -->
             <div class="random-walks-wrapper">
                 <div class="headline2">
-                    <h2>Random walks</h2>
+                    <h2>Random walks</h2><br>
                 </div>
                 <div class="random-walks-plot-wrapper">
                     <div id="random_walks_plot_container"
@@ -131,28 +136,173 @@
                     <!-- </div> -->
                 </div>
             </div>
-
             <div class="placeholder" style="width:100%;height:100px;"></div>
-            <!-- SIMULATION OF 2D DIFFUSION -->
-            <div class="ddiff-wrapper">
+            <!-- 2D RANDOM WALKS -->
+            <div class="random-walks2d-wrapper">
                 <div class="headline2">
-                    <h2>Simulation of 2D Diffusion</h2>
+                    <h2>2D Random walks</h2>
+                    <br>
                 </div>
-                <div id="ddiff_plot_wrapper" class="ddiff-plot-wrapper">
-                    <canvas id="ddiff_plot" class="canvas"></canvas>
-                </div>
-                <div id="ddiff_input_section"
-                    class="ddiff-input-section">
-                    <div class="input-wrapper">
-                        <button class="someBtn" id="ddiff_goBtn">Go</button>
-                        <button class="someBtn" id="ddiff_stepBtn">Step</button>
-                        <button class="someBtn" id="ddiff_stopBtn">Stop</button>
-                        <button class="someBtn" id="ddiff_resetBtn">Reset</button>
+                <div class="random-walks2d-content">
+                    <div class="rw-left-container">
+                        <div class="random-walks2d-content-infobox">
+                            <p>
+                                <h3>How it works</h3>
+                                A two-dimensional random walk is a concatenation
+                                of random movements, where each movement depends
+                                on its previous position. In this example, the
+                                initial position is (0,0). With each new step,
+                                another random point within range is marked,
+                                starting from the last point. If a point is
+                                stepped on several times, it will be displayed a
+                                little thicker in this example. If there are no
+                                more untouched steps in any direction, the walk
+                                ends here.
+
+                                Most examples of random walks have a fixed
+                                number of steps as the only end condition.
+
+                                <h4>Where it is used</h4>
+                                Random walks are used, for example, in financial
+                                mathematics to model stock prices, and in
+                                physics to simulate particle movement. They are
+                                mainly used for simple illustration of complex
+                                seemingly random motions.
+
+                                <h4>What you can do</h4>
+                                In this example, you can display individual
+                                steps or let it run on its own with the go or
+                                Agien button. Reset resets the graphic.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="rw-right-container">
+                        <div class="random-walks2d-plot-content-wrapper">
+                            <div class="random-walks2d-plot-wrapper">
+                                <div id="random_walks2d_plot_container"
+                                    class="random-walks2d-plot-container">
+                                    <canvas id="random_walks2d_plot"
+                                        class="canvas"></canvas>
+                                </div>
+                                <div id="random_walks2d_input_section"
+                                    class="random-walks2d-input-section">
+                                    <div class="input-wrapper">
+                                        <button class="someBtn"
+                                            id="random_walks2d_goBtn">Go</button>
+                                        <button class="someBtn"
+                                            id="random_walks2d_stepBtn">Step</button>
+                                        <button class="someBtn"
+                                            id="random_walks2d_stopBtn">Stop</button>
+                                        <button class="someBtn"
+                                            id="random_walks2d_againBtn">Again</button>
+                                        <button class="someBtn"
+                                            id="random_walks2d_resetBtn">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="placeholder" style="width:100%;height:100px;"></div>
+            <!-- SIMULATION OF 2D DIFFUSION -->
+            <div class="ddiff-wrapper">
+                <div class="headline2">
+                    <h2>Simulation of 2D Diffusion</h2><br>
+                </div>
+                <div class="ddiff-content">
+                    <div class="ddiff-left-container">
+                        <div class="ddiff-plot-content-wrapper">
+                            <div id="ddiff_plot_wrapper"
+                                class="ddiff-plot-wrapper">
+                                <div id="ddiff_plot_container"
+                                    class="ddiff-plot-container">
+                                    <canvas id="ddiff_plot" class="canvas"></canvas>
+                                </div>
+                                <div id="ddiff_input_section"
+                                    class="ddiff-input-section">
+                                    <div class="input-wrapper">
+                                        <button class="someBtn"
+                                            id="ddiff_goBtn">Go</button>
+                                        <button class="someBtn"
+                                            id="ddiff_stepBtn">Step</button>
+                                        <button class="someBtn"
+                                            id="ddiff_stopBtn">Stop</button>
+                                        <button class="someBtn"
+                                            id="ddiff_resetBtn">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ddiff-right-container">
+                        <div class="ddiff-content-infobox">
+                            <p>
+                                <h3>What is diffusion?</h3>
+
+                                Diffusion describes the process by which a
+                                substance
+                                or
+                                particle spreads out from a concentrated area
+                                into
+                                the
+                                surrounding area and thus decreases in
+                                concentration.
+                                This can be observed especially in liquids and
+                                gases, as
+                                these particles seem to move randomly in all
+                                directions.
+                                <h4>Why is it so important for nature?</h4>
+                                In nature, diffusion is everywhere. Animals use
+                                their
+                                sense of smell to detect tiny particles, some of
+                                which
+                                move and spread randomly through space, and can
+                                thus
+                                locate their prey or pack. The prouess of
+                                diffusion
+                                is
+                                also found in the human body, as respiration
+                                releases
+                                excess carbon dioxide, which concentrates in the
+                                cells
+                                and diffuses outward through the cell membrane
+                                into
+                                the
+                                blood. The process of osmosis in plants is also
+                                due
+                                to
+                                the diffusion of water.
+
+                                <h4>Diffusion in everyday life</h4>
+                                We humans also experience diffusion processes
+                                every
+                                day.
+                                The smell of coffee in the morning, which
+                                spreads in
+                                the
+                                apartment, the smell of freshly mowed lawn or
+                                even
+                                dead
+                                creatures. All these smells and particles spread
+                                in
+                                the
+                                room by the process of diffusion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="placeholder"
+                style="width:100%;height:100px"></div>
+            <div id="footer" style="text-align:center; margin:0 auto; width:
+                50%;">Copyright by <a
+                    href="https://www.b-schwertfeger.de">Benjamin
+                    T. Schwertfeger</a> <br> (July 2021)
+            </div>
         </div>
         <div class="placeholder" style="width:100%;height:100px;"></div>
         <script src="main.js" async defer></script>
