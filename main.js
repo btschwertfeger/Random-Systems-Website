@@ -369,8 +369,6 @@ function plotLinStochEq(input = window.linstocheq_default_input) {
     window.linstocheq_hist_plot = new Chart(ctx2, config2);
 }
 
-
-
 /*
 # =========
 # =====================
@@ -439,7 +437,7 @@ function plotRandomGraphs(input = window.random_walks_defaultInput) {
             plugins: {
                 title: {
                     display: true,
-                    text: '1D random walk with ' + input["n"] + " graphs",
+                    text: 'Simple random walk with ' + input["n"] + " graphs",
                     font: {
                         Family: 'Helvetica',
                         size: 18
@@ -512,6 +510,7 @@ function plot_default_2DRandomWalk(input = window.random_walks2d_defaultInput) {
         // labels: LABELS,
         datasets: [{
             label: 'Dataset 1',
+
             data: data,
             borderColor: "blue",
             backgroundColor: "blue",
@@ -528,10 +527,15 @@ function plot_default_2DRandomWalk(input = window.random_walks2d_defaultInput) {
             plugins: {
                 legend: {
                     position: 'top',
+                    display: false,
                 },
                 title: {
                     display: true,
                     text: '2D Random Walk',
+                    font: {
+                        Family: 'Helvetica',
+                        size: 18
+                    }
                 },
             },
             scales: {
@@ -737,7 +741,11 @@ function do2diff_default() {
                 },
                 title: {
                     display: true,
-                    text: '2D Diffusion'
+                    text: '2D Diffusion',
+                    font: {
+                        Family: 'Helvetica',
+                        size: 18
+                    }
                 },
             },
             scales: {
