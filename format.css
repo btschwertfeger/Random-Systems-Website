@@ -4,6 +4,18 @@
   --primary-font-size: 18px;
 }
 
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+  /* avoid transition flickering */
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d; 
+}
+
 html {
   font-family: Helvetica;
   margin: 0px;
@@ -28,6 +40,9 @@ p {
 
 .headline2 {
   text-align: center;
+  z-index: 5;
+  position: relative;
+  -webkit-transform: translateZ(0);
 }
 
 .description p {
@@ -37,6 +52,7 @@ p {
 a {
   text-decoration: none;
   color: blue;
+  transition: color 0.2s ease-in-out;
 }
 a:hover {
   color: red;
@@ -67,6 +83,7 @@ a:hover {
   border-radius: 15px;
   background: #ffffff;
   box-shadow: inset 26px 26px 52px #b3b3b3, inset -26px -26px 52px #ffffff;
+  transition: opacity 0.3s ease-in-out;
 }
 .slide:hover {
   opacity: 1;
@@ -102,6 +119,7 @@ a:hover {
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 6px 6px 12px #969696, -6px -6px 12px #ffffff;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .someBtn {
@@ -114,16 +132,17 @@ a:hover {
   text-decoration: none;
   display: inline-block;
   border-radius: 15px;
-  box-shadow: 26px 26px 52px #969696, -26px -26px 52px #ffffff;
+  box-shadow: 16px 16px 32px #969696, -16px -16px 32px #ffffff;
+  transition: box-shadow 0.3s ease-in-out;
 }
 .someBtn:hover {
   background: linear-gradient(145deg, #e6e6e6, #ffffff);
   box-shadow: 8px 8px 16px #969696, -8px -8px 16px #ffffff;
+  cursor: pointer;
 }
 .someBtn:active {
   background-color: #ffffff;
   box-shadow: inset 8px 8px 16px #969696, inset -8px -8px 16px #ffffff;
-  /* transform: translateY(4px); */
 }
 
 /* PLOT AND INPUT CONTAINER */
@@ -148,13 +167,21 @@ a:hover {
 .random-walks-plot-container,
 .random-walks2d-plot-container,
 .ddiff-plot-container {
+  z-index: 5;
+  position: relative;
+  -webkit-transform: translateZ(0);
+
   position: relative;
   -webkit-appearance: none;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
+.random-walks-plot-wrapper{
+  z-index: 5;
+  position: relative;
+  -webkit-transform: translateZ(0);
+}
 /*
 # =========
 # =====================
@@ -168,22 +195,24 @@ a:hover {
   min-height: 575px;
   margin: 0 auto;
   border-radius: 30px 30px 30px 30px;
+  font-size: 0;
 }
 .linstocheq-line-plot-container {
   display: inline-block;
   margin: 0 auto;
-  width: 70%;
+  width: 65%;
   height: 500px;
 }
 .linstocheq-hist-plot-container {
   display: inline-block;
-  margin: 0 auto;
-  width: 29%;
+  margin-right: 2%;
+  width: 33%;
   height: 500px;
 }
 .linstocheq-input-section {
   margin: 0 auto;
   text-align: center;
+  font-size: 18px;
 }
 .linstocheq-input-section button{
   margin-bottom: 10px;
@@ -238,19 +267,22 @@ a:hover {
 }
 .random-walks2d-plot-content-wrapper {
   margin: 0 auto;
-  width: 700px;
-  height: 760px;
+  width: 600px;
+  height: 660px;
   border-radius: 30px 30px 30px 30px;
+  font-size: 0px;
 }
 .random-walks2d-plot-container {
-  width: 700px;
-  height: 700px;
+  width: 98%;
+  margin-right: 2%;
+  height: 600px;
 }
 .random-walks2d-input-section {
   margin: 0 auto;
   text-align: center;
-  width: 700px;
+  width: 100%;
   height: 60px;
+  font-size: 18px;
 }
 
 @media only screen and (min-width: 1250px) {
@@ -294,6 +326,14 @@ a:hover {
 .ddiff-content-infobox {
   padding: 30px;
 }
+
+.ddiff-plot-content-wrapper {
+  width:100%;
+  height: 660px;
+  margin: 0 auto;
+  font-size: 0px;
+}
+
 .ddiff-plot-wrapper {
   margin: 0 auto;
   width: 600px;
@@ -301,15 +341,14 @@ a:hover {
   border-radius: 30px 30px 30px 30px;
 }
 .ddiff-plot-container {
-  width: 600px;
+  width: 98%;
   height: 600px;
 }
 .ddiff-input-section {
   text-align: center;
+  font-size: 18px;
 }
-.ddiff-plot-content-wrapper {
-  margin: 0 auto;
-}
+
 @media only screen and (max-width: 1250px) {
   .ddiff-content,
   .ddiff-left-container,
@@ -339,11 +378,6 @@ a:hover {
     width: 39%;
     margin-left: 20px;
   }
-}
-
-@media only screen and (min-width: 1450px) {
-}
-@media only screen and (min-width: 1680px) {
 }
 
 /*

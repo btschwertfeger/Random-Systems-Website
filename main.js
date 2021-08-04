@@ -53,7 +53,7 @@ function dynamicColors() {
     let r = Math.floor(Math.random() * 255);
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
-    return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+    return "rgba(" + r + "," + g + "," + b + ", 0.8)";
 }
 
 function poolColors(a) {
@@ -132,21 +132,34 @@ function createLinStochReqDatasets(input) {
     // HISTOGRAM
     const ymin = Math.min.apply(Math, RESULT.y),
         ymax = Math.max.apply(Math, RESULT.y);
-    const interval = 1 //(ymax + ymin) / 25;
 
-    let bins = [],
-        binCount = 0;
+    const bars = 25; //(maximal bars)
+    const bin_brakes = [...new Array(bars + 1)].map((elem, index) => (index - bars / 2) * ymax / 10);
+    let bins = [];
 
-    //Setup Bins
-    for (var i = ymin; i < ymax; i += interval) {
+
+    //Setup Bins (old)
+    // binCount = 0;
+    // const interval = 1; //(ymax + ymin) / 15;
+    // for (var i = ymin; i < ymax; i+=interval) {
+    //     bins.push({
+    //         binNum: binCount,
+    //         minNum: i,
+    //         maxNum: i + interval,
+    //         count: 0
+    //     })
+    //     binCount++;
+    // }
+
+    for (let i = 0; i < bin_brakes.length - 1; i++) {
         bins.push({
-            binNum: binCount,
-            minNum: i,
-            maxNum: i + interval,
-            count: 0
+            binNum: i,
+            minNum: bin_brakes[i],
+            maxNum: bin_brakes[i + 1],
+            count: 0,
         })
-        binCount++;
     }
+
     //Loop through data and add to bin's count
     for (let i = 0; i < RESULT.y.length; i++) {
         let item = RESULT.y[i];
@@ -180,7 +193,7 @@ function createLinStochReqDatasets(input) {
     // HISTOGRAM
     const LINSTOCHEQ_HIST_DATASET = {
         type: 'bar',
-        label: 'frequency',
+        label: 'Density',
         labels: labels,
         yAxisID: 'y',
         xAxisID: 'x',
@@ -248,26 +261,6 @@ function plotLinStochEq(input = window.linstocheq_default_input) {
                         }
                     },
                 },
-                // yAxesHist: {
-                //     id: 'yAxisHist',
-                //     display: true,
-                //     title: {
-                //         display: true,
-                //         text: "yHist",
-                //         font: {
-                //             family: 'Helvetica',
-                //             size: 16
-                //         },
-                //     },
-                //     min: min + 1,
-                //     max: max - 1,
-                //     step: step,
-                //     // ticks: {
-                //     //     callback: function (val, index) {
-                //     //         return RESULT.LINSTOCHEQ_HIST_DATASET.labels[index];
-                //     //     },
-                //     // },
-                // },
                 y: {
                     display: true,
                     title: {
@@ -343,7 +336,7 @@ function plotLinStochEq(input = window.linstocheq_default_input) {
                     display: true,
                     title: {
                         display: true,
-                        text: 'frequency',
+                        text: 'Density',
                         font: {
                             family: 'Helvetica',
                             size: 16,
@@ -713,14 +706,14 @@ function do2diff_default() {
     const DATA = {
         labels: LABELS,
         datasets: [{
-                label: 'Dataset 1',
+                label: 'Particle type 1',
                 data: ds1,
                 borderColor: "blue",
                 backgroundColor: "transparent",
                 pointRadius: 5,
             },
             {
-                label: 'Dataset 2',
+                label: 'Particle type 2',
                 data: ds2,
                 borderColor: "red",
                 backgroundColor: "transparent",
@@ -753,7 +746,7 @@ function do2diff_default() {
                     display: true,
                     title: {
                         display: true,
-                        text: 'particles[1,]',
+                        text: 'x',
                         font: {
                             family: 'Helvetica',
                             size: 16,
@@ -766,7 +759,7 @@ function do2diff_default() {
                     display: true,
                     title: {
                         display: true,
-                        text: 'particles[2,]',
+                        text: 'y',
                         font: {
                             family: 'Helvetica',
                             size: 16,
