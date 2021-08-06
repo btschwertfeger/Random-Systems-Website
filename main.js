@@ -706,14 +706,14 @@ function do2diff_default() {
     const DATA = {
         labels: LABELS,
         datasets: [{
-                label: 'Particle type 1',
+                label: 'particle type 1',
                 data: ds1,
                 borderColor: "blue",
                 backgroundColor: "transparent",
                 pointRadius: 5,
             },
             {
-                label: 'Particle type 2',
+                label: 'particle type 2',
                 data: ds2,
                 borderColor: "red",
                 backgroundColor: "transparent",
