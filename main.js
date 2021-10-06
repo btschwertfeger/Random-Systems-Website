@@ -1,4 +1,15 @@
 /*
+<!--
+    ########################################
+    ## @author Benjamin Thomas Schwertfeger (July 2021)
+    ## copyright by Benjamin Thomas Schwertfeger (July 2021)
+    ############ 
+
+    https://paleodyn.uni-bremen.de/study/MES/MES_11b.html
+    https://paleodyn.uni-bremen.de/study/MES/MES_11.html
+-->
+*/
+/*
 # =========
 # =====================
 # =====================================
