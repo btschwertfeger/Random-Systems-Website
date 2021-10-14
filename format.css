@@ -25,7 +25,7 @@
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d; 
+  -webkit-transform-style: preserve-3d;
 }
 
 html {
@@ -189,7 +189,7 @@ a:hover {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.random-walks-plot-wrapper{
+.random-walks-plot-wrapper {
   z-index: 5;
   position: relative;
   -webkit-transform: translateZ(0);
@@ -202,7 +202,7 @@ a:hover {
 # ===================================================================================
 // LINEAR STOCHASTIC EQUATION 
 */
-.linstochreq-plot-content-wrapper{
+.linstochreq-plot-content-wrapper {
   width: 100%;
   min-height: 575px;
   margin: 0 auto;
@@ -226,7 +226,7 @@ a:hover {
   text-align: center;
   font-size: 18px;
 }
-.linstocheq-input-section button{
+.linstocheq-input-section button {
   margin: 15px 5px 15px 0px;
   vertical-align: top;
 }
@@ -238,10 +238,10 @@ a:hover {
 # ===================================================================================
 // RANDOM WALKS 
 */
-.random-walks-plot-content-wrapper{
-  margin:0 auto;
+.random-walks-plot-content-wrapper {
+  margin: 0 auto;
   min-height: 550px;
-  width:80%;
+  width: 80%;
   border-radius: 30px 30px 30px 30px;
 }
 .random-walks-plot-wrapper {
@@ -259,7 +259,7 @@ a:hover {
   width: 100%;
   text-align: center;
 }
-.random-walks-input-section button{
+.random-walks-input-section button {
   margin: 15px 5px 15px 0px;
   vertical-align: top;
 }
@@ -342,7 +342,7 @@ a:hover {
 }
 
 .ddiff-plot-content-wrapper {
-  width:100%;
+  width: 100%;
   height: 660px;
   margin: 0 auto;
   font-size: 0px;
@@ -368,15 +368,25 @@ a:hover {
   .ddiff-left-container,
   .ddiff-right-container {
     display: -webkit-box;
+    display: -ms-flexbox; /* Internet Explorer 10 */
+    display: -moz-box; /* Firefox */
+    display: -webkit-box; /* Safari and Chrome */
+    display: box;
     -webkit-box-orient: vertical;
   }
 
   .ddiff-left-container {
-    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 2; /* Internet Explorer 10 */
+    -moz-box-ordinal-group: 2; /* Firefox */
+    -webkit-box-ordinal-group: 2; /* Safari and Chrome */
+    box-ordinal-group: 2;
   }
 
   .ddiff-right-container {
-    -webkit-box-ordinal-group: 1;
+    -ms-flex-order: 1; /* Internet Explorer 10 */
+    -moz-box-ordinal-group: 1; /* Firefox */
+    -webkit-box-ordinal-group: 1; /* Safari and Chrome */
+    box-ordinal-group: 1;
   }
 }
 @media only screen and (min-width: 1250px) {
