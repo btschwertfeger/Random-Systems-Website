@@ -30,4 +30,8 @@ def randomWalks2D(nsteps=25000):
     plt.title("2D Random Walk ($n = " + str(nsteps) + "$ steps)")
     plt.plot(x, y)
     plt.show()
-randomWalks2D()
+
+def main():
+    randomWalks2D()
+
+if __name__ == '__main__': main()
