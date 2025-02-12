@@ -3,7 +3,7 @@
     ########################################
     ## @author Benjamin Thomas Schwertfeger (July 2021)
     ## copyright by Benjamin Thomas Schwertfeger (July 2021)
-    ############ 
+    ############
 
     https://paleodyn.uni-bremen.de/study/MES/MES_11b.html
     https://paleodyn.uni-bremen.de/study/MES/MES_11.html
@@ -101,7 +101,9 @@ a:hover {
 
   border-radius: 15px;
   background: #ffffff;
-  box-shadow: inset 26px 26px 52px #b3b3b3, inset -26px -26px 52px #ffffff;
+  box-shadow:
+    inset 26px 26px 52px #b3b3b3,
+    inset -26px -26px 52px #ffffff;
   transition: opacity 0.3s ease-in-out;
 }
 .slide:hover {
@@ -115,14 +117,18 @@ a:hover {
   cursor: pointer;
   border-radius: 15px;
   background: linear-gradient(145deg, #e6e6e6, #ffffff);
-  box-shadow: 6px 6px 12px #969696, -0px -0px 0px #ffffff;
+  box-shadow:
+    6px 6px 12px #969696,
+    -0px -0px 0px #ffffff;
 }
 .slider::-moz-range-thumb {
   width: 35px;
   height: 20px;
   cursor: pointer;
   background: linear-gradient(145deg, #e6e6e6, #ffffff);
-  box-shadow: 6px 6px 12px #969696, -0px -0px 0px #ffffff;
+  box-shadow:
+    6px 6px 12px #969696,
+    -0px -0px 0px #ffffff;
 }
 .slide-value {
   width: 65px;
@@ -137,7 +143,9 @@ a:hover {
 
   background-color: #ffffff;
   border-radius: 15px;
-  box-shadow: 6px 6px 12px #969696, -6px -6px 12px #ffffff;
+  box-shadow:
+    6px 6px 12px #969696,
+    -6px -6px 12px #ffffff;
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -151,17 +159,23 @@ a:hover {
   text-decoration: none;
   display: inline-block;
   border-radius: 15px;
-  box-shadow: 16px 16px 32px #969696, -16px -16px 32px #ffffff;
+  box-shadow:
+    16px 16px 32px #969696,
+    -16px -16px 32px #ffffff;
   transition: box-shadow 0.3s ease-in-out;
 }
 .someBtn:hover {
   background: linear-gradient(145deg, #e6e6e6, #ffffff);
-  box-shadow: 8px 8px 16px #969696, -8px -8px 16px #ffffff;
+  box-shadow:
+    8px 8px 16px #969696,
+    -8px -8px 16px #ffffff;
   cursor: pointer;
 }
 .someBtn:active {
   background-color: #ffffff;
-  box-shadow: inset 8px 8px 16px #969696, inset -8px -8px 16px #ffffff;
+  box-shadow:
+    inset 8px 8px 16px #969696,
+    inset -8px -8px 16px #ffffff;
 }
 
 /* PLOT AND INPUT CONTAINER */
@@ -170,7 +184,9 @@ a:hover {
 .random-walks2d-plot-content-wrapper,
 .ddiff-plot-wrapper {
   border-radius: 30px 30px 0px 0px;
-  box-shadow: 26px 0px 52px #969696, -26px -26px 52px #ffffff;
+  box-shadow:
+    26px 0px 52px #969696,
+    -26px -26px 52px #ffffff;
 }
 
 .linstocheq-input-section,
@@ -178,7 +194,9 @@ a:hover {
 .random-walks2d-input-section,
 .ddiff-input-section {
   border-radius: 0px 0px 30px 30px;
-  box-shadow: 26px 26px 52px #969696, -26px -26px 52px #ffffff;
+  box-shadow:
+    26px 26px 52px #969696,
+    -26px -26px 52px #ffffff;
 }
 
 .linstocheq-line-plot-container,
@@ -207,7 +225,7 @@ a:hover {
 # =====================================
 # ===================================================================================
 # ===================================================================================
-// LINEAR STOCHASTIC EQUATION 
+// LINEAR STOCHASTIC EQUATION
 */
 .linstochreq-plot-content-wrapper {
   width: 100%;
@@ -243,7 +261,7 @@ a:hover {
 # =====================================
 # ===================================================================================
 # ===================================================================================
-// RANDOM WALKS 
+// RANDOM WALKS
 */
 .random-walks-plot-content-wrapper {
   margin: 0 auto;
@@ -276,7 +294,7 @@ a:hover {
 # =====================================
 # ===================================================================================
 # ===================================================================================
-// 2D RANDOM WALKS 
+// 2D RANDOM WALKS
 */
 
 .random-walks2d-content {
